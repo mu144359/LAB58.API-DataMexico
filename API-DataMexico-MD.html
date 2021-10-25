@@ -190,30 +190,25 @@ summary {
 
 <h1 class="title toc-ignore">API DataMexico MD</h1>
 <h4 class="author">Selene Muñoz</h4>
-<h4 class="date">23/10/2021</h4>
+<h4 class="date">24/10/2021</h4>
 
 </div>
 
 
-<p>Instalar librerías</p>
+<p>Instalar librerias</p>
 <p>install.packages(“jsonlite”)</p>
-<p>Cargar librerías</p>
+<p>Cargar librerias</p>
 <pre class="r"><code>library(jsonlite)</code></pre>
 <p>Cargar base de datos</p>
 <p>choose.files()</p>
-<pre class="r"><code>data_api2 &lt;- fromJSON(&quot;C:\\Users\\munoz\\Downloads\\Municipality-Year-records.json&quot;)</code></pre>
+<pre class="r"><code>datos_api2 &lt;- fromJSON (&quot;C:\\Users\\munoz\\Dropbox\\Selene\\Doctorado\\4to semestre\\Unidad 2\\Lab58\\LAB58.API-DataMexico\\Municipality-Year-records.json&quot;)</code></pre>
 <p>Ver el tipo de datos y los nombres de las columnas</p>
-<pre class="r"><code>class(data_api2)</code></pre>
+<pre class="r"><code>class(datos_api2)</code></pre>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<pre class="r"><code>names(data_api2)</code></pre>
+<pre class="r"><code>names(datos_api2)</code></pre>
 <pre><code>## [1] &quot;data&quot;   &quot;source&quot;</code></pre>
-<p>Extraer solo los datos en formato data frame</p>
-<pre class="r"><code>df1 &lt;- data_api2[[&quot;data&quot;]]</code></pre>
-<p>Ver el tipo de datos</p>
-<pre class="r"><code>class(df1)</code></pre>
-<pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<p>Ver el data frame</p>
-<pre class="r"><code>head (df1)</code></pre>
+<p>Ver la data</p>
+<pre class="r"><code>head(datos_api2[[&quot;data&quot;]])</code></pre>
 <pre><code>##   Municipality ID   Municipality Year     GINI Income Rate
 ## 1            1001 Aguascalientes 2010 0.426187    0.117213
 ## 2            1001 Aguascalientes 2015 0.392368    0.138449
@@ -221,8 +216,12 @@ summary {
 ## 4            1002       Asientos 2015 0.369850    0.168443
 ## 5            1003       Calvillo 2010 0.426041    0.117333
 ## 6            1003       Calvillo 2015 0.375097    0.163683</code></pre>
+<p>Transformar a data frame</p>
+<pre class="r"><code>final_API &lt;- as.data.frame((datos_api2[[&quot;data&quot;]]))
+class(final_API)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>Exportar la base de datos en formato csv</p>
-<pre class="r"><code>write.csv(df1, file = &quot;Gini_Coneval.csv&quot;, row.names = FALSE)</code></pre>
+<pre class="r"><code>write.csv(final_API, file = &quot;final_API.CSV&quot;)</code></pre>
 
 
 

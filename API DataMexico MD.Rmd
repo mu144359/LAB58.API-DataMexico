@@ -1,15 +1,15 @@
 ---
 title: "API DataMexico MD"
 author: "Selene Muñoz"
-date: "23/10/2021"
+date: "24/10/2021"
 output: html_document
 ---
 
-Instalar librerías
+Instalar librerias
 
 install.packages("jsonlite")
 
-Cargar librerías
+Cargar librerias
 ```{r}
 library(jsonlite)
 ```
@@ -18,32 +18,28 @@ Cargar base de datos
 
 choose.files()
 ```{r}
-data_api2 <- fromJSON("C:\\Users\\munoz\\Downloads\\Municipality-Year-records.json")
+datos_api2 <- fromJSON ("C:\\Users\\munoz\\Dropbox\\Selene\\Doctorado\\4to semestre\\Unidad 2\\Lab58\\LAB58.API-DataMexico\\Municipality-Year-records.json")
 ```
 
 Ver el tipo de datos y los nombres de las columnas
 ```{r}
-class(data_api2)
-names(data_api2)
+class(datos_api2)
+names(datos_api2)
 ```
 
-Extraer solo los datos en formato data frame
+Ver la data
 ```{r}
-df1 <- data_api2[["data"]]
+head(datos_api2[["data"]])
 ```
 
-Ver el tipo de datos
+Transformar a data frame
 ```{r}
-class(df1)
-```
-
-Ver el data frame
-```{r}
-head (df1)
+final_API <- as.data.frame((datos_api2[["data"]]))
+class(final_API)
 ```
 
 Exportar la base de datos en formato csv
 ```{r}
-write.csv(df1, file = "Gini_Coneval.csv", row.names = FALSE)
+write.csv(final_API, file = "final_API.CSV")
 ```
 
